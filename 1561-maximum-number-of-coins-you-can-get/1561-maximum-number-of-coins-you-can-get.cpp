@@ -1,14 +1,14 @@
 class Solution {
 public:
     int maxCoins(vector<int>& piles) {
-        deque<int> dq(piles.begin(),piles.end());
-        sort(dq.begin(),dq.end());
+        sort(piles.begin(),piles.end());
         int sum=0;
-        while(dq.size()!=0){
-            dq.pop_back();
-            sum+=dq.back();
-            dq.pop_back();
-            dq.pop_front();
+        int i=0,j=piles.size()-1;
+        while(i<j){
+            j--;
+            sum+=piles[j];
+            j--;
+            i++;
         }
         return sum;
         
