@@ -4,26 +4,17 @@ public:
         vector<vector<int>> sol;
         vector<pair<int,int>> pp;
         vector<int> v;
-        vector<vector<int>> v1;
         for(auto x:intervals){
             if((newInterval[0]>=x[0] && newInterval[0]<=x[1])||(newInterval[1]>=x[0] && newInterval[1]<=x[1]) ||(newInterval[1]>=x[1] && newInterval[0]<=x[0])){
                 pp.push_back(make_pair(x[0],x[1]));
-            }else if(newInterval[1]<x[0]){
-                v.push_back(x[0]);
-                v.push_back(x[1]);
-                v1.push_back(v);
-                v.clear();
-            }
-            else{
-                
-                v.push_back(x[0]);
-                v.push_back(x[1]);
-                sol.push_back(v);
+            }else if(newInterval[1]>=x[0])
+            {
+                sol.push_back({x[0],x[1]});
                 v.clear();
                 
             }
         }
-        pp.push_back(make_pair(newInterval[0],newInterval[1]));
+        pp.push_back({newInterval[0],newInterval[1]});
         int m1=newInterval[0];
         int m2=newInterval[1];
         for(auto x:pp){
@@ -32,11 +23,15 @@ public:
             //cout<<x.first<<"-"<<x.second<<endl;
         }
         
-        vector<int> q;
-        q.push_back(m1);
-        q.push_back(m2);
-        sol.push_back(q);
-        sol.insert(sol.end(),v1.begin(),v1.end());
+        sol.push_back({m1,m2});
+        for(auto x:intervals){
+            if(newInterval[1]<x[0]){
+                v.push_back(x[0]);
+                v.push_back(x[1]);
+                sol.push_back(v);
+                v.clear();
+            }
+        }
         //sort(sol.begin(),sol.end());
         return sol;
     }
