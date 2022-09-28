@@ -26,10 +26,7 @@ public:
         sol.push_back({m1,m2});
         for(auto x:intervals){
             if(newInterval[1]<x[0]){
-                v.push_back(x[0]);
-                v.push_back(x[1]);
-                sol.push_back(v);
-                v.clear();
+                sol.push_back({x[0],x[1]});
             }
         }
         //sort(sol.begin(),sol.end());
