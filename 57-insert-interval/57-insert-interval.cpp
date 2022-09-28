@@ -3,14 +3,16 @@ public:
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval) {
         vector<vector<int>> sol;
         vector<pair<int,int>> pp;
+        vector<int> v;
         for(auto x:intervals){
             if((newInterval[0]>=x[0] && newInterval[0]<=x[1])||(newInterval[1]>=x[0] && newInterval[1]<=x[1]) ||(newInterval[1]>=x[1] && newInterval[0]<=x[0])){
                 pp.push_back(make_pair(x[0],x[1]));
             }else{
-                vector<int> v;
+                
                 v.push_back(x[0]);
                 v.push_back(x[1]);
                 sol.push_back(v);
+                v.clear();
                 
             }
         }
