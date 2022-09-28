@@ -4,10 +4,17 @@ public:
         vector<vector<int>> sol;
         vector<pair<int,int>> pp;
         vector<int> v;
+        vector<vector<int>> v1;
         for(auto x:intervals){
             if((newInterval[0]>=x[0] && newInterval[0]<=x[1])||(newInterval[1]>=x[0] && newInterval[1]<=x[1]) ||(newInterval[1]>=x[1] && newInterval[0]<=x[0])){
                 pp.push_back(make_pair(x[0],x[1]));
-            }else{
+            }else if(newInterval[1]<x[0]){
+                v.push_back(x[0]);
+                v.push_back(x[1]);
+                v1.push_back(v);
+                v.clear();
+            }
+            else{
                 
                 v.push_back(x[0]);
                 v.push_back(x[1]);
@@ -29,7 +36,8 @@ public:
         q.push_back(m1);
         q.push_back(m2);
         sol.push_back(q);
-        sort(sol.begin(),sol.end());
+        sol.insert(sol.end(),v1.begin(),v1.end());
+        //sort(sol.begin(),sol.end());
         return sol;
     }
 };
