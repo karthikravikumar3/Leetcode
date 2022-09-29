@@ -8,7 +8,7 @@ public:
     void sortColors(vector<int>& nums) {
         int i=0,j=nums.size()-1,k=j;
         while(i<=j){
-            cout<<nums[j]<<"-"<<endl;
+            //cout<<nums[j]<<"-"<<endl;
             if(nums[j]==2){
                 //cout<<"k"<<endl;
                 swap(nums[k],nums[j]);
