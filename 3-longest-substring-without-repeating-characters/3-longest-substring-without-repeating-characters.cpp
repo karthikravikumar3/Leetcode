@@ -6,12 +6,12 @@ public:
         int count=0;
         while(j<s.size()){
             if(arr[s[j]-' ']==0){
-                cout<<"+-"<<s[j]<<endl;
+                //cout<<"+-"<<s[j]<<endl;
                 arr[s[j]-' ']++;
                 j++;
             }else{
                 while(arr[s[j]-' ']!=0){
-                    cout<<"--"<<s[i]<<endl;
+                    //cout<<"--"<<s[i]<<endl;
                     arr[s[i]-' ']--;
                     i++;
                     
