@@ -10,7 +10,7 @@ public:
             }
             
                 while(count>k){
-                    cout<<"l"<<endl;
+                    //cout<<"l"<<endl;
                     if(nums[i]==0){
                         count--;
                         
